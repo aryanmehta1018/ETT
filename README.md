@@ -1,4 +1,4 @@
-# 🧠 Resume Skill Matching System (ETT Project)
+# 🧠 Resume Analyzer
 
 ## 📌 Overview
 
@@ -128,10 +128,12 @@ streamlit run app.py
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Contributors
 
-**Aryan Mehta**
-**Ajitesh Shukla**
+* **Aryan Mehta**
+* **Ajitesh Shukla**
+
+
 
 ---
 
