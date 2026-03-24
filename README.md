@@ -20,7 +20,7 @@ The system extracts skills from a resume and compares them with the required ski
 
 * **Python** – Core programming language
 * **Regular Expressions (Regex)** – Skill matching
-* **Streamlit (optional)** – Web interface
+* **Streamlit** – Web interface
 * **Git & GitHub** – Version control
 
 ---
