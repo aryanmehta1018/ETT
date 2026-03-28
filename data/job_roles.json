@@ -1,4 +1,22 @@
 {
-  "Data Analyst": ["Python", "SQL", "Excel", "Power BI"],
-  "Software Engineer": ["Python", "DSA", "OOP", "Git"]
+  "Data Analyst": ["Python", "SQL", "Excel", "Power BI", "Tableau", "Data Cleaning", "Statistics"],
+  "Software Engineer": ["Python", "DSA", "OOP", "Git", "System Design", "Algorithms"],
+  "Web Developer": ["HTML", "CSS", "JavaScript", "React", "Node.js", "REST APIs"],
+  "Frontend Developer": ["HTML", "CSS", "JavaScript", "React", "Redux", "UI/UX"],
+  "Backend Developer": ["Node.js", "Python", "Java", "Databases", "APIs", "Authentication"],
+  "Full Stack Developer": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Databases", "Git"],
+  "Machine Learning Engineer": ["Python", "Machine Learning", "TensorFlow", "PyTorch", "Data Preprocessing", "Model Deployment"],
+  "Data Scientist": ["Python", "Machine Learning", "Statistics", "Pandas", "NumPy", "Data Visualization"],
+  "AI Engineer": ["Python", "Deep Learning", "NLP", "TensorFlow", "PyTorch", "Computer Vision"],
+  "DevOps Engineer": ["Docker", "Kubernetes", "CI/CD", "AWS", "Linux", "Shell Scripting"],
+  "Cloud Engineer": ["AWS", "Azure", "GCP", "Cloud Architecture", "Networking", "Security"],
+  "Cybersecurity Analyst": ["Network Security", "Ethical Hacking", "Cryptography", "Firewalls", "SIEM"],
+  "Mobile App Developer": ["Java", "Kotlin", "Flutter", "React Native", "Android Studio", "APIs"],
+  "UI/UX Designer": ["Figma", "Adobe XD", "User Research", "Wireframing", "Prototyping"],
+  "Database Administrator": ["SQL", "Database Design", "MySQL", "PostgreSQL", "Backup & Recovery"],
+  "Game Developer": ["C++", "Unity", "Unreal Engine", "Game Physics", "Graphics"],
+  "Blockchain Developer": ["Solidity", "Ethereum", "Smart Contracts", "Web3", "Cryptography"],
+  "Business Analyst": ["Excel", "SQL", "Data Analysis", "Requirement Gathering", "Communication"],
+  "QA Engineer": ["Testing", "Selenium", "Automation", "Bug Tracking", "Test Cases"],
+  "Embedded Systems Engineer": ["C", "C++", "Microcontrollers", "IoT", "Hardware Interfacing"]
 }
