@@ -1,6 +1,4 @@
-streamlit
-python-docx
 pdfplumber
-PyPDF2
-pandas
-google-genai
+python-docx
+google-generativeai
+streamlit
