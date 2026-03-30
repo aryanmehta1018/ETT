@@ -2,12 +2,37 @@ from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
+SYNONYMS = {
+    "dsa": ["data structures", "data structures and algorithms"],
+    "ml": ["machine learning"],
+    "ai": ["artificial intelligence"],
+    "nlp": ["natural language processing"],
+    "js": ["javascript"],
+    "dbms": ["database management system"],
+    "oop": ["object oriented programming"],
+    "os": ["operating system"],
+    "sql": ["structured query language"]
+}
 
 def normalize(skill):
     return skill.lower().strip()
 
 
+def expand_skill(skill):
+    skill = normalize(skill)
+
+    expanded = set([skill])
+
+    for key, values in SYNONYMS.items():
+        if skill == key or skill in values:
+            expanded.add(key)
+            expanded.update(values)
+
+    return list(expanded)
+
+
 def match_skills(extracted_skills, required_skills):
+
     extracted = list(set([normalize(skill) for skill in extracted_skills]))
     required = list(set([normalize(skill) for skill in required_skills]))
 
@@ -19,21 +44,29 @@ def match_skills(extracted_skills, required_skills):
         }
 
     extracted_embeddings = model.encode(extracted, convert_to_tensor=True)
-    required_embeddings = model.encode(required, convert_to_tensor=True)
 
     matched = []
     missing = []
 
-    for i, req_skill in enumerate(required):
-       
-        similarities = util.cos_sim(required_embeddings[i], extracted_embeddings)
+    for req in required:
 
-        max_score = similarities.max().item()
+        req_variants = expand_skill(req)
+        found = False
 
-        if max_score > 0.6:  
-            matched.append(req_skill)
-        else:
-            missing.append(req_skill)
+        for variant in req_variants:
+
+            variant_embedding = model.encode([variant], convert_to_tensor=True)
+
+            similarities = util.cos_sim(variant_embedding, extracted_embeddings)
+            max_score = similarities.max().item()
+
+            if max_score > 0.6:
+                matched.append(req)
+                found = True
+                break
+
+        if not found:
+            missing.append(req)
 
     match_percentage = (len(matched) / len(required)) * 100
 
