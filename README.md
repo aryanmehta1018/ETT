@@ -9,7 +9,7 @@ The system extracts skills from a resume and compares them with the required ski
 ## 🚀 Features
 
 * ✅ Extracts skills from resume text
-* ✅ Matches skills with job requirements
+* ✅ Matches skills with job skill requirements
 * ✅ Uses regex for accurate keyword detection
 * ✅ Simple and efficient implementation
 * ✅ Easily extendable with advanced AI models
