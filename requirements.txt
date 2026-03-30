@@ -1,4 +1,10 @@
+streamlit
 pdfplumber
 python-docx
 google-generativeai
-streamlit
+sentence-transformers
+scikit-learn
+matplotlib
+pandas
+torch
+torchvision

@@ -1,40 +1,39 @@
-import re
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
 
 def normalize(skill):
     return skill.lower().strip()
 
-def skill_in_text(skill, text):
-    # Match full word only
-    pattern = r'\b' + re.escape(skill) + r'\b'
-    return re.search(pattern, text) is not None
 
 def match_skills(extracted_skills, required_skills):
+    extracted = list(set([normalize(skill) for skill in extracted_skills]))
+    required = list(set([normalize(skill) for skill in required_skills]))
 
-    extracted = [normalize(skill) for skill in extracted_skills]
-    required = [normalize(skill) for skill in required_skills]
+    if not extracted or not required:
+        return {
+            "matched_skills": [],
+            "missing_skills": required,
+            "match_percentage": 0
+        }
+
+    extracted_embeddings = model.encode(extracted, convert_to_tensor=True)
+    required_embeddings = model.encode(required, convert_to_tensor=True)
 
     matched = []
     missing = []
 
-    for req in required:
-        found = False
+    for i, req_skill in enumerate(required):
+       
+        similarities = util.cos_sim(required_embeddings[i], extracted_embeddings)
 
-        for ext in extracted:
+        max_score = similarities.max().item()
 
-            # Exact match
-            if req == ext:
-                matched.append(req)
-                found = True
-                break
-
-            # Word boundary match (safe)
-            if skill_in_text(req, ext):
-                matched.append(req)
-                found = True
-                break
-
-        if not found:
-            missing.append(req)
+        if max_score > 0.6:  
+            matched.append(req_skill)
+        else:
+            missing.append(req_skill)
 
     match_percentage = (len(matched) / len(required)) * 100
 
